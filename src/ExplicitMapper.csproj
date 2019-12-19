@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net40;net45;net451;net452;net46;net461;net47;netstandard1.0;netstandard1.2;netstandard1.3;netstandard2.0</TargetFrameworks>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <PropertyGroup>
+  <PackageId>ExplicitMapper</PackageId>
+  <Title>ExplicitMapper</Title>
+  <Summary>A mapping framework that is completely explicit.</Summary>
+  <PackageDescription>Type mapping and member mapping must be fully defined. No 'magic' going on at all.</PackageDescription>
+  <PackageLicenseExpression>MIT</PackageLicenseExpression>
+  <PackageTags>Mapping;Mapper</PackageTags>
+  <RepositoryType>git</RepositoryType>
+  <RepositoryUrl>https://github.com/iamandylamb/ExplicitMapper</RepositoryUrl>
+  <ProjectUrl>https://github.com/iamandylamb/ExplicitMapper</ProjectUrl>
+  <Version>1.1.0</Version>
+  <Authors>iamandylamb</Authors>
+  <PackageReleaseNotes>Added support for other .NET versions.</PackageReleaseNotes>
+  </PropertyGroup>
+
+</Project>

@@ -8,13 +8,17 @@ namespace ExplicitMapper
     {
         public abstract TDestination Map(TSource source);
 
-        public IEnumerable<TDestination> Map(IEnumerable<TSource> source) => source.Select(Map);
+        public IEnumerable<TDestination> Map(IEnumerable<TSource> source) => 
+            source.Select(Map);
 
-        public async Task<TDestination> MapAsync(TSource source) => await Task.Run(() => Map(source));
+        public async Task<TDestination> MapAsync(TSource source) => 
+            await Task.Run(() => Map(source)).ConfigureAwait(false);
 
-        public async Task<IEnumerable<TDestination>> MapAsync(IEnumerable<TSource> source) => await Task.Run(() => Map(source)); // Single task for the whole collection.
+        public async Task<IEnumerable<TDestination>> MapAsync(IEnumerable<TSource> source) => 
+            await Task.Run(() => Map(source)).ConfigureAwait(false); // Single task for the whole collection.
 
-        public async Task<IEnumerable<TDestination>> MapAsync_PerSource(IEnumerable<TSource> source) => await Task.WhenAll(source.Select(MapAsync)); // Task per source item.
+        public async Task<IEnumerable<TDestination>> MapAsync_PerSource(IEnumerable<TSource> source) => 
+            await Task.WhenAll(source.Select(MapAsync)).ConfigureAwait(false); // Task per source item.
     }
 
 }

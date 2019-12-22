@@ -5,31 +5,36 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace ExplicitMapper.Test
 {
     [TestClass]
-    public class StructMapperTest
+    public class ClassMapperTest
     {
         private class Model
         {
             public int Value { get; set; }
         }
-        
-        private class PlusOneMapper : StructMapper<Model, int>
+
+        private class Response
         {
-            protected override void Map(Model source, out int destination)
+            public int Value { get; set; }
+        }
+        
+        private class DirectMapper : ClassMapper<Model, Response>
+        {
+            protected override void Map(Model source, Response destination)
             {
-                destination = source.Value + 1;
+                destination.Value = source.Value;
             }
         }
 
-        private IMapper<Model, int> target = new PlusOneMapper();
+        private IMapper<Model, Response> target = new DirectMapper();
 
         [TestMethod]
-        public void MapsSingleValue()
+        public void MapsSingleClass()
         {
-            var expected = 2;
+            var expected = new Response { Value = 1 };
 
             var actual = target.Map(new Model { Value = 1 });
 
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expected.Value, actual.Value);
         }
 
         [TestMethod]
@@ -37,9 +42,9 @@ namespace ExplicitMapper.Test
         {
             var source = new[] { new Model { Value = 1 }, new Model { Value = 2 }, new Model { Value = 3 } };
 
-            var expected = new[] { 2, 3, 4 };
+            var expected = new[] { 1, 2, 3 }; // Just checking values.
 
-            var actual = target.Map(source).ToArray();
+            var actual = target.Map(source).Select(x => x.Value).ToArray();
 
             CollectionAssert.AreEqual(expected, actual);
         }
@@ -47,11 +52,11 @@ namespace ExplicitMapper.Test
         [TestMethod]
         public async Task MapsSingleValueAsync()
         {
-            var expected = 2;
+            var expected = new Response { Value = 1 };
 
             var actual = await target.MapAsync(new Model { Value = 1 });
 
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expected.Value, actual.Value);
         }
 
         [TestMethod]
@@ -59,11 +64,11 @@ namespace ExplicitMapper.Test
         {
             var source = new[] { new Model { Value = 1 }, new Model { Value = 2 }, new Model { Value = 3 } };
 
-            var expected = new[] { 2, 3, 4 };
+            var expected = new[] { 1, 2, 3 }; // Just checking values.
 
             var actual = await target.MapAsync(source);
 
-            CollectionAssert.AreEqual(expected, actual.ToArray());
+            CollectionAssert.AreEqual(expected, actual.Select(x => x.Value).ToArray());
         }
     }
 }

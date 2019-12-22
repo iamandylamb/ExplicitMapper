@@ -1,31 +1,32 @@
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ExplicitMapper.Test
 {
     [TestClass]
-    public class StructMapperTest
+    public class StringMapperTest
     {
         private class Model
         {
             public int Value { get; set; }
         }
-        
-        private class PlusOneMapper : StructMapper<Model, int>
+
+        private class StringMapper : StringMapper<Model>
         {
-            protected override void Map(Model source, out int destination)
+            protected override void Map(Model source, StringBuilder destination)
             {
-                destination = source.Value + 1;
+                destination.Append(source.Value);
             }
         }
 
-        private IMapper<Model, int> target = new PlusOneMapper();
+        private IMapper<Model, string> target = new StringMapper();
 
         [TestMethod]
         public void MapsSingleValue()
         {
-            var expected = 2;
+            var expected = "1";
 
             var actual = target.Map(new Model { Value = 1 });
 
@@ -37,7 +38,7 @@ namespace ExplicitMapper.Test
         {
             var source = new[] { new Model { Value = 1 }, new Model { Value = 2 }, new Model { Value = 3 } };
 
-            var expected = new[] { 2, 3, 4 };
+            var expected = new[] { "1", "2", "3" };
 
             var actual = target.Map(source).ToArray();
 
@@ -47,7 +48,7 @@ namespace ExplicitMapper.Test
         [TestMethod]
         public async Task MapsSingleValueAsync()
         {
-            var expected = 2;
+            var expected = "1";
 
             var actual = await target.MapAsync(new Model { Value = 1 });
 
@@ -59,7 +60,7 @@ namespace ExplicitMapper.Test
         {
             var source = new[] { new Model { Value = 1 }, new Model { Value = 2 }, new Model { Value = 3 } };
 
-            var expected = new[] { 2, 3, 4 };
+            var expected = new[] { "1", "2", "3" };
 
             var actual = await target.MapAsync(source);
 

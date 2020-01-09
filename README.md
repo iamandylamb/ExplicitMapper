@@ -17,13 +17,20 @@ All mappers implement the same generic interface for simple installation and use
 ```
 public interface IMapper<TSource, TDestination>
 {
+    // Map a source object to a destination object.
     TDestination Map(TSource source);
 
+    // Map a source collection to a destination collection.
     IEnumerable<TDestination> Map(IEnumerable<TSource> source);
 
+    // Map a source object to a destination object asynchronously.
     Task<TDestination> MapAsync(TSource source);
 
+    // Map a source collection to a destination collection asynchonously.
     Task<IEnumerable<TDestination>> MapAsync(IEnumerable<TSource> source);
+
+    // Map a source collection to a destination collection concurrently and asynchronously.
+    Task<IEnumerable<TDestination>> MapParallel(IEnumerable<TSource> source);
 }
 ```
 

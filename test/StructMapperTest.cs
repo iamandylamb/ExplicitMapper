@@ -65,5 +65,17 @@ namespace ExplicitMapper.Test
 
             CollectionAssert.AreEqual(expected, actual.ToArray());
         }
+
+        [TestMethod]
+        public async Task MapsMultipleValuesParallel()
+        {
+            var source = new[] { new Model { Value = 1 }, new Model { Value = 2 }, new Model { Value = 3 } };
+
+            var expected = new[] { 2, 3, 4 };
+
+            var actual = await target.MapParallel(source);
+
+            CollectionAssert.AreEqual(expected, actual.ToArray());
+        }
     }
 }

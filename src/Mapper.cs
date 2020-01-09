@@ -15,10 +15,10 @@ namespace ExplicitMapper
             await Task.Run(() => Map(source)).ConfigureAwait(false);
 
         public async Task<IEnumerable<TDestination>> MapAsync(IEnumerable<TSource> source) => 
-            await Task.Run(() => Map(source)).ConfigureAwait(false); // Single task for the whole collection.
+            await Task.Run(() => Map(source)).ConfigureAwait(false); // Sequentially map all source items, asynchronously.
 
-        public async Task<IEnumerable<TDestination>> MapAsync_PerSource(IEnumerable<TSource> source) => 
-            await Task.WhenAll(source.Select(MapAsync)).ConfigureAwait(false); // Task per source item.
+        public async Task<IEnumerable<TDestination>> MapParallel(IEnumerable<TSource> source) => 
+            await Task.WhenAll(source.Select(MapAsync)).ConfigureAwait(false); // Concurrently map all source item, asynchronously.
     }
 
 }

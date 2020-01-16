@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExplicitMapper", "src\Expli
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExplicitMapper.Test", "test\ExplicitMapper.Test.csproj", "{BFAD7407-F164-4ED5-9D5C-DAA79A512681}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExplicitMapper.Example", "example\ExplicitMapper.Example.csproj", "{256CDFE6-74C6-489E-9493-92E9AF22B173}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,5 +46,17 @@ Global
 		{BFAD7407-F164-4ED5-9D5C-DAA79A512681}.Release|x64.Build.0 = Release|Any CPU
 		{BFAD7407-F164-4ED5-9D5C-DAA79A512681}.Release|x86.ActiveCfg = Release|Any CPU
 		{BFAD7407-F164-4ED5-9D5C-DAA79A512681}.Release|x86.Build.0 = Release|Any CPU
+		{256CDFE6-74C6-489E-9493-92E9AF22B173}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{256CDFE6-74C6-489E-9493-92E9AF22B173}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{256CDFE6-74C6-489E-9493-92E9AF22B173}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{256CDFE6-74C6-489E-9493-92E9AF22B173}.Debug|x64.Build.0 = Debug|Any CPU
+		{256CDFE6-74C6-489E-9493-92E9AF22B173}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{256CDFE6-74C6-489E-9493-92E9AF22B173}.Debug|x86.Build.0 = Debug|Any CPU
+		{256CDFE6-74C6-489E-9493-92E9AF22B173}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{256CDFE6-74C6-489E-9493-92E9AF22B173}.Release|Any CPU.Build.0 = Release|Any CPU
+		{256CDFE6-74C6-489E-9493-92E9AF22B173}.Release|x64.ActiveCfg = Release|Any CPU
+		{256CDFE6-74C6-489E-9493-92E9AF22B173}.Release|x64.Build.0 = Release|Any CPU
+		{256CDFE6-74C6-489E-9493-92E9AF22B173}.Release|x86.ActiveCfg = Release|Any CPU
+		{256CDFE6-74C6-489E-9493-92E9AF22B173}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

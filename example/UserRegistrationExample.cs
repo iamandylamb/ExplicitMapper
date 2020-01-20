@@ -7,7 +7,9 @@ namespace ExplicitMapper.Example
     public class UserRegistrationExample
     {
         // The mapper would usually be provided by the DI system.
-        private IMapper<UserRegistrationModel, User> mapper = new UserRegistrationMapper(new AddressMapper());
+        private IMapper<UserRegistrationModel, User> mapper = new UserRegistrationMapper(
+                                                                new AddressMapper(),
+                                                                new DateOfBirthMapper());
 
         [TestMethod]
         public void Example()

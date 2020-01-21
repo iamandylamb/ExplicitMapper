@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
-using Castle.Windsor;
-using Castle.Windsor.Installer;
 using ExplicitMapper;
 
 namespace Castle.Windsor.Example

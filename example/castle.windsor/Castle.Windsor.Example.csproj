@@ -15,7 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\ExplicitMapper.csproj" />
-    <ProjectReference Include="..\composite.mapping\ExplicitMapper.Example.csproj" />
+    <ProjectReference Include="..\mapping\Example.ExplicitMapper.csproj" />
   </ItemGroup>
 
 </Project>

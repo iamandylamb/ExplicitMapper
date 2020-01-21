@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExplicitMapper", "src\Expli
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExplicitMapper.Test", "test\ExplicitMapper.Test.csproj", "{BFAD7407-F164-4ED5-9D5C-DAA79A512681}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExplicitMapper.Example", "example\composite.mapping\ExplicitMapper.Example.csproj", "{256CDFE6-74C6-489E-9493-92E9AF22B173}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExplicitMapper.Example", "example\mapping\Example.ExplicitMapper.csproj", "{256CDFE6-74C6-489E-9493-92E9AF22B173}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Castle.Windsor.Example", "example\castle.windsor\Castle.Windsor.Example.csproj", "{A7F1D7C9-3E3F-437C-AAD3-75ECD9D26FC2}"
 EndProject

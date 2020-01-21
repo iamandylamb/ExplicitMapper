@@ -4,13 +4,13 @@ using Microsoft.Extensions.DependencyInjection;
 using ExplicitMapper;
 using Example.ExplicitMapper;
 
-namespace microsoft.dependencies
+namespace Example.Microsoft.Extensions.DependencyInjection
 {
     [TestClass]
-    public class MicrosoftDependenciesExample
+    public class Example
     {
         [TestMethod]
-        public void Example()
+        public void Test()
         {
             var serviceCollection = new ServiceCollection();
 

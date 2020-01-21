@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Microsoft.Extensions.DependencyInjection;
 using ExplicitMapper;
 
-namespace microsoft.dependencies
+namespace Example.Microsoft.Extensions.DependencyInjection
 {
     public static class MapperInstaller
     {
@@ -24,5 +24,4 @@ namespace microsoft.dependencies
                 && service.GetGenericTypeDefinition() == typeof(IMapper<,>);
         }
     }
-
 }

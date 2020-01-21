@@ -1,15 +1,16 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Castle.MicroKernel.Registration;
+using Castle.Windsor;
 using ExplicitMapper;
 using Example.ExplicitMapper;
 
-namespace Castle.Windsor.Example
+namespace Example.Castle.Windsor
 {
     [TestClass]
-    public class CastleWindsorExample
+    public class Example
     {
         [TestMethod]
-        public void Example()
+        public void Test()
         {
             var container = new WindsorContainer();
 

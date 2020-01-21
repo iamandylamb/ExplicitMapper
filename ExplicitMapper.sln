@@ -9,9 +9,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExplicitMapper.Test", "test
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExplicitMapper.Example", "example\mapping\Example.ExplicitMapper.csproj", "{256CDFE6-74C6-489E-9493-92E9AF22B173}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Castle.Windsor.Example", "example\castle.windsor\Castle.Windsor.Example.csproj", "{A7F1D7C9-3E3F-437C-AAD3-75ECD9D26FC2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Castle.Windsor.Example", "example\castle.windsor\Example.Castle.Windsor.csproj", "{A7F1D7C9-3E3F-437C-AAD3-75ECD9D26FC2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Dependencies.Example", "example\microsoft.dependencies\microsoft.dependencies.csproj", "{61946E5D-B6D2-48B1-9BFB-5EFA15EC3B05}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Dependencies.Example", "example\microsoft.extensions.dependencyinjection\Example.Microsoft.Extensions.DependencyInjection.csproj", "{61946E5D-B6D2-48B1-9BFB-5EFA15EC3B05}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

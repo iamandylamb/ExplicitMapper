@@ -1,4 +1,6 @@
-namespace ExplicitMapper.Example
+using ExplicitMapper;
+
+namespace Example.ExplicitMapper
 {
     public class AddressMapper : ClassMapper<UserRegistrationModel, Address>
     {

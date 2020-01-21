@@ -1,4 +1,4 @@
-namespace ExplicitMapper.Example
+namespace Example.ExplicitMapper
 {
     public class UserRegistrationModel
     {

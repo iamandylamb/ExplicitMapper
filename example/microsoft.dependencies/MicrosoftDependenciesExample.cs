@@ -2,7 +2,7 @@ using System.Reflection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.Extensions.DependencyInjection;
 using ExplicitMapper;
-using ExplicitMapper.Example;
+using Example.ExplicitMapper;
 
 namespace microsoft.dependencies
 {

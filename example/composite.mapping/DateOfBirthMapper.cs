@@ -1,6 +1,7 @@
 using System;
+using ExplicitMapper;
 
-namespace ExplicitMapper.Example
+namespace Example.ExplicitMapper
 {
     public class DateOfBirthMapper : StructMapper<UserRegistrationModel, DateTime>
     {

@@ -1,7 +1,8 @@
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using ExplicitMapper;
 
-namespace ExplicitMapper.Example
+namespace Example.ExplicitMapper
 {
     [TestClass]
     public class UserRegistrationExample

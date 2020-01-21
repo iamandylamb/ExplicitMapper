@@ -1,7 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Castle.MicroKernel.Registration;
 using ExplicitMapper;
-using ExplicitMapper.Example;
+using Example.ExplicitMapper;
 
 namespace Castle.Windsor.Example
 {

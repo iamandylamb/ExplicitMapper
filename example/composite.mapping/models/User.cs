@@ -1,6 +1,6 @@
 using System;
 
-namespace ExplicitMapper.Example
+namespace Example.ExplicitMapper
 {
     public class User
     {

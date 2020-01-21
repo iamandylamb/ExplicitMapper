@@ -19,14 +19,14 @@ namespace Castle.Windsor.Example
             container.Install(new MapperInstaller(Classes.FromAssemblyContaining<UserRegistrationMapper>()));
 
             // Install specific mapper classes from any location.
-            //container.Install(new MapperInstaller(Classes.From(typeof(Mapper3))));
+            //container.Install(new MapperInstaller(Classes.From(typeof(AddressMapper))));
 
             // Register specific generic mappers.
-            // container.Register(Component.For(typeof(XmlSerializerMapper<>))
-            //                             .ImplementedBy(typeof(XmlSerializerMapper<>))
-            //                             .LifestyleSingleton());
+            container.Register(Component.For(typeof(XmlSerializerMapper<>))
+                                        .ImplementedBy(typeof(XmlSerializerMapper<>))
+                                        .LifestyleSingleton());
 
-            Assert.IsNotNull(container.Resolve<UserRegistrationMapper>());
+            Assert.IsNotNull(container.Resolve<IMapper<UserRegistrationModel, User>>());
         }
     }
 }

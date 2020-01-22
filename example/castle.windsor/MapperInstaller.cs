@@ -1,10 +1,8 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
-using ExplicitMapper;
+using ExplicitMapper.DependencyInjection;
 
 namespace Example.Castle.Windsor
 {
@@ -19,15 +17,9 @@ namespace Example.Castle.Windsor
 
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
-            container.Register(this.classes.Where(type => !type.IsGenericTypeDefinition && GetMapper(type).Any())
-                                           .WithService.Select((type, _) => GetMapper(type))
+            container.Register(this.classes.Where(type => !type.IsGenericTypeDefinition && type.GetMappers().Any())
+                                           .WithService.Select((type, _) => type.GetMappers())
                                            .LifestyleSingleton()); // Other lifestyles may be preferable.
-        }
-
-        private static IEnumerable<Type> GetMapper(Type type)
-        {
-            return type.GetInterfaces().Where(i => i.IsGenericType
-                                                && i.GetGenericTypeDefinition() == typeof(IMapper<,>));
         }
     }
 }

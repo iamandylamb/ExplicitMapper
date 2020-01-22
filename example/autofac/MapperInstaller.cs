@@ -1,9 +1,7 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Autofac;
-using ExplicitMapper;
+using ExplicitMapper.DependencyInjection;
 
 namespace Example.Autofac
 {
@@ -12,16 +10,11 @@ namespace Example.Autofac
         public static ContainerBuilder RegisterMappers(this ContainerBuilder builder, Assembly assembly)
         {
             builder.RegisterAssemblyTypes(assembly)
-                   .Where(type => !type.IsGenericTypeDefinition && GetMapper(type).Any())
-                   .As(GetMapper);
+                   .Where(type => !type.IsGenericTypeDefinition && type.GetMappers().Any())
+                   .As(type => type.GetMappers())
+                   .SingleInstance(); // Other lifestyles may be preferable.
 
             return builder;
-        }
-
-        private static IEnumerable<Type> GetMapper(Type type)
-        {
-            return type.GetInterfaces().Where(i => i.IsGenericType
-                                                && i.GetGenericTypeDefinition() == typeof(IMapper<,>));
         }
     }
 }

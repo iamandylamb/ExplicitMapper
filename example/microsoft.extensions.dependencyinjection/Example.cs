@@ -16,7 +16,7 @@ namespace Example.Microsoft.Extensions.DependencyInjection
 
             var services = 
                 // Install all mapper classes from an assembly.
-                serviceCollection.AddMappers(Assembly.GetAssembly(typeof(UserRegistrationMapper)).GetTypes())
+                serviceCollection.AddMappers(Assembly.GetAssembly(typeof(UserRegistrationMapper)))
                                  // Register specific generic mappers.
                                  .AddSingleton(typeof(XmlSerializerMapper<>), typeof(XmlSerializerMapper<>))
                                  .BuildServiceProvider();

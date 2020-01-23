@@ -4,7 +4,7 @@ namespace ExplicitMapper
     /// Base mapper class for 'reference' destinations.
     /// </summary>
     public abstract class ClassMapper<TSource, TDestination> : Mapper<TSource, TDestination> 
-        where TDestination: new()
+        where TDestination: class, new()
     {
         public override sealed TDestination Map(TSource source)
         {

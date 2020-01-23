@@ -12,7 +12,7 @@ Common mappings included out-of-the-box. For example, the `XmlSerializerMapper` 
 
 ## DI framework friendly
 Complex or nested mappings can be constructed through constructor injection in your favourite DI framework.  
-Examples can be found in the [Dependency Injection](./DependencyInjection.md) page
+Examples can be found in the [Dependency Injection](./DependencyInjection.md) page.  
 All mappers implement the same generic interface for simple installation and use.
 
 ```

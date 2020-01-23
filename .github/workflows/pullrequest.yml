@@ -14,7 +14,7 @@ jobs:
       with:
         dotnet-version: 3.0.100
     - name: Temporarily ignore example projects - see https://github.com/iamandylamb/ExplicitMapper/issues/7
-      run: dotnet sln ExplicitMapper.sln remove ./example/**/*.csproj
+      run: dotnet sln ExplicitMapper.sln remove ./example/autofac/*.csproj ./example/castle.windsor/*.csproj
     - name: Compile source (release configuration)
       run: dotnet build --configuration Release
     - name: Run unit tests

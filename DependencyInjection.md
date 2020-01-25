@@ -173,3 +173,42 @@ This is a contrived example to demonstrate the registration of mapper classes an
 ```
 var container = new Container(new MapperRegistry(Assembly.GetAssembly(typeof(UserRegistrationMapper))));
 ```
+
+## Unity
+
+### Mapper Registration Helper
+This extension method registers all mapper classes from the supplied assembly. The mappers are registered as **singletons** but other lifestyles may be appropriate depending on your use case.
+```
+using System.Linq;
+using System.Reflection;
+using Unity;
+using ExplicitMapper.DependencyInjection;
+
+namespace Example.Unity
+{
+    public static class MapperInstaller
+    {
+        public static IUnityContainer RegisterMappers(this IUnityContainer container, Assembly assembly)
+        {
+            return assembly.GetTypes()
+                .Where(t => t.IsClass && !t.IsAbstract && !t.IsGenericTypeDefinition)
+                .SelectMany(t => t.GetMappers()
+                    .Select(i => new { Service = i, Implementation = t }))
+                .Aggregate(container, (c, s) => 
+                    c.RegisterSingleton(s.Service, s.Implementation)); // Other lifestyles may be preferable.
+        }
+
+    }
+}
+```
+
+### Mapper Registration
+This is a contrived example to demonstrate the registration of mapper classes and the provided open generic mappers. Look to the Unity documentation for best practice guidance. 
+```
+var container = new UnityContainer();
+
+// Install all mapper classes from an assembly.
+container.RegisterMappers(Assembly.GetAssembly(typeof(UserRegistrationMapper)))
+         // Register specific generic mappers.
+         .RegisterSingleton(typeof(XmlSerializerMapper<>), typeof(XmlSerializerMapper<>));
+```

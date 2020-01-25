@@ -136,3 +136,40 @@ var services =
                      .AddSingleton(typeof(XmlSerializerMapper<>), typeof(XmlSerializerMapper<>))
                      .BuildServiceProvider();
 ```
+
+## Structure Map
+
+### Mapper Registration Helper
+Structure Map uses `Registry` implementations for registration. The `MapperRegistry` below accepts an `Assembly` via its constructor that should be scanned for `IMapper<,>` **services**. The mappers are registered as **singletons** but other lifestyles may be appropriate depending on your use case.
+```
+using System.Reflection;
+using StructureMap;
+using ExplicitMapper;
+
+namespace Example.StructureMap
+{
+    public class MapperRegistry : Registry
+    {
+        public MapperRegistry(Assembly assembly)
+        {
+            Scan(scanner => 
+            {
+                // Install all mapper classes from an assembly.
+                scanner.Assembly(assembly);
+                scanner.Exclude(type => type.IsGenericTypeDefinition);
+                scanner.ConnectImplementationsToTypesClosing(typeof(IMapper<,>))
+                       .OnAddedPluginTypes(config => config.Singleton()); // Other lifestyles may be preferable.
+            });
+
+            // Register specific generic mappers.
+            this.ForSingletonOf(typeof(XmlSerializerMapper<>)).Use(typeof(XmlSerializerMapper<>)).Singleton();
+        }
+    }
+}
+```
+
+### Mapper Registration
+This is a contrived example to demonstrate the registration of mapper classes and the provided open generic mappers. Look to the Structure Map documentation for best practice guidance. 
+```
+var container = new Container(new MapperRegistry(Assembly.GetAssembly(typeof(UserRegistrationMapper))));
+```

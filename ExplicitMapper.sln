@@ -15,6 +15,8 @@ Project("{3AC096D0-A1C2-E12C-1390-A8335801FDAB}") = "Example.Autofac", "example\
 EndProject
 Project("{3AC096D0-A1C2-E12C-1390-A8335801FDAB}") = "Example.Microsoft.Extensions.DependencyInjection", "example\microsoft.extensions.dependencyinjection\Example.Microsoft.Extensions.DependencyInjection.csproj", "{61946E5D-B6D2-48B1-9BFB-5EFA15EC3B05}"
 EndProject
+Project("{3AC096D0-A1C2-E12C-1390-A8335801FDAB}") = "Example.StructureMap", "example\structuremap\Example.StructureMap.csproj", "{D1C99A1E-6560-4AEB-90BB-EAC83B31B2ED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,5 +46,7 @@ Global
 		{61946E5D-B6D2-48B1-9BFB-5EFA15EC3B05}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4E22D5F2-E43F-458B-BF9F-CE7C62B1C5CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4E22D5F2-E43F-458B-BF9F-CE7C62B1C5CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1C99A1E-6560-4AEB-90BB-EAC83B31B2ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1C99A1E-6560-4AEB-90BB-EAC83B31B2ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 EndGlobal

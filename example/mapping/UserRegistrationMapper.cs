@@ -7,13 +7,16 @@ namespace Example.ExplicitMapper
     {
         private IMapper<UserRegistrationModel, Address> addressMapper;
         private IMapper<UserRegistrationModel, DateTime> dateOfBirthMapper;
+        private IMapper<UserRegistrationModel, Password> passwordMapper;
 
         public UserRegistrationMapper(
             IMapper<UserRegistrationModel, Address> addressMapper,
-            IMapper<UserRegistrationModel, DateTime> dateOfBirthMapper)
+            IMapper<UserRegistrationModel, DateTime> dateOfBirthMapper,
+            IMapper<UserRegistrationModel, Password> passwordMapper)
         {
             this.addressMapper = addressMapper;
             this.dateOfBirthMapper = dateOfBirthMapper;
+            this.passwordMapper = passwordMapper;
         }
 
         protected override void Map(UserRegistrationModel source, User destination)
@@ -27,8 +30,11 @@ namespace Example.ExplicitMapper
             // Using a sub-class-mapping.
             destination.Address = this.addressMapper.Map(source);
 
-            // Use a sub-struct-mapping.
+            // Using a sub-struct-mapping.
             destination.DateOfBirth = this.dateOfBirthMapper.Map(source);
+            
+            // Using a sub-mapper that in-turn has dependencies.
+            destination.Password = this.passwordMapper.Map(source);
         }
     }
 }

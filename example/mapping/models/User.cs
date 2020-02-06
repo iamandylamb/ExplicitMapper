@@ -11,5 +11,7 @@ namespace Example.ExplicitMapper
         public Address Address { get; set; }
 
         public DateTime DateOfBirth { get; set; }
+        
+        public Password Password { get; set; }
     }
 }

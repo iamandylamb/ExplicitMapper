@@ -1,4 +1,5 @@
 using System.Reflection;
+using System.Security.Cryptography;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using StructureMap;
 using ExplicitMapper;
@@ -12,7 +13,13 @@ namespace Example.StructureMap
         [TestMethod]
         public void Test()
         {
-            var container = new Container(new MapperRegistry(Assembly.GetAssembly(typeof(UserRegistrationMapper))));
+            var container = new Container(_ => 
+            {
+                // Install all mapper classes from an assembly.
+                _.IncludeRegistry(new MapperRegistry(Assembly.GetAssembly(typeof(UserRegistrationMapper))));
+                // Register other dependencies.
+                _.For<HashAlgorithm>().Use<SHA1CryptoServiceProvider>().Singleton();
+            });
 
             Assert.IsNotNull(container.GetInstance<IMapper<UserRegistrationModel, User>>());
         }

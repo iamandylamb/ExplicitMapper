@@ -1,3 +1,4 @@
+using System.Security.Cryptography;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;
@@ -20,6 +21,11 @@ namespace Example.Castle.Windsor
             // Register specific generic mappers.
             container.Register(Component.For(typeof(XmlSerializerMapper<>))
                                         .ImplementedBy(typeof(XmlSerializerMapper<>))
+                                        .LifestyleSingleton());
+
+            // Register other dependencies.
+            container.Register(Component.For<HashAlgorithm>()
+                                        .ImplementedBy<SHA1CryptoServiceProvider>()
                                         .LifestyleSingleton());
 
             Assert.IsNotNull(container.Resolve<IMapper<UserRegistrationModel, User>>());

@@ -19,5 +19,7 @@ namespace Example.ExplicitMapper
         public int MonthOfBirth { get; set; }
 
         public int YearOfBirth { get; set; }
+        
+        public string Password { get; set; }
     }
 }

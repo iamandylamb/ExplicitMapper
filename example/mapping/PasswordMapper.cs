@@ -10,7 +10,7 @@ namespace Example.ExplicitMapper
         private readonly HashAlgorithm hashAlgorithm;
         public PasswordMapper(HashAlgorithm hashAlgorithm)
         {
-            this.hashAlgoritm = hashAlgorithm;
+            this.hashAlgorithm = hashAlgorithm;
         }
         
         protected override void Map(UserRegistrationModel source, Password destination)

@@ -1,4 +1,5 @@
 using System.Reflection;
+using System.Security.Cryptography;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.Extensions.DependencyInjection;
 using ExplicitMapper;
@@ -19,6 +20,8 @@ namespace Example.Microsoft.Extensions.DependencyInjection
                 serviceCollection.AddMappers(Assembly.GetAssembly(typeof(UserRegistrationMapper)))
                                  // Register specific generic mappers.
                                  .AddSingleton(typeof(XmlSerializerMapper<>), typeof(XmlSerializerMapper<>))
+                                 // Register other dependencies.
+                                 .AddSingleton<HashAlgorithm, SHA1CryptoServiceProvider>()
                                  .BuildServiceProvider();
 
             Assert.IsNotNull(services.GetService<IMapper<UserRegistrationModel, User>>());

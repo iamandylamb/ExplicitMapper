@@ -15,8 +15,9 @@ namespace Example.ExplicitMapper
         
         protected override void Map(UserRegistrationModel source, Password destination)
         {
-            destination.HashedPassword = this.hashAlgorithm.ComputeHash(
-                                            Encoding.UTF8.GetBytes(source.Password));
+            destination.HashedPassword = Convert.ToBase64String(
+                                            this.hashAlgorithm.ComputeHash(
+                                                Encoding.UTF8.GetBytes(source.Password)));
             
             destination.CreatedDate = DateTime.UtcNow;
         }

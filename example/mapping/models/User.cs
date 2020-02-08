@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Example.ExplicitMapper
 {
@@ -13,5 +14,7 @@ namespace Example.ExplicitMapper
         public DateTime DateOfBirth { get; set; }
         
         public Password Password { get; set; }
+
+        public IEnumerable<SecurityQuestion> SecurityQuestions { get; set; }
     }
 }

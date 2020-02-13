@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\ExplicitMapper.csproj" />
+    <ProjectReference Include="..\src\Explicit.Mapper.csproj" />
   </ItemGroup>
 
 </Project>

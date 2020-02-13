@@ -5,6 +5,14 @@ email, or any other method with the owners of this repository before making a ch
 
 Please note we have a [code of conduct](./CODE_OF_CONDUCT.md), please follow it in all your interactions with the project.
 
+## Branching Approach
+
+We are using the [Git Flow](https://jeffkreeftmeijer.com/git-flow/) strategy.  
+1. The `master` branch contains the latest release code.  
+ **Only merge to `master` when the changes have been agreed ready for release.**
+2. The `develop` branch (a child of `master`) is a staging area for changes to be included in a future release.
+3. `feature`, `release`, and `hotfix` branches can be added as necessary, following the Git Flow principles.
+
 ## Pull Request Process
 
 1. Link the pull request to the issue it addresses.

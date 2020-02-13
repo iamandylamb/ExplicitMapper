@@ -37,3 +37,32 @@ public interface IMapper<TSource, TDestination>
 
 ## Examples
 To Do
+
+## Asynchronous collection mapping
+Two asynchronous collection mapping methods are available, `MapAsync` and `MapParallel`.
+
+```
+public async Task<IEnumerable<TDestination>> MapAsync(IEnumerable<TSource> source);
+
+public async Task<IEnumerable<TDestination>> MapParallel(IEnumerable<TSource> source);
+```
+
+Their signatures are the same, but their behaviour is different:
+
+`MapAsync` executes the collection mapping asynchronously, but within the async `Task` sequentially maps each item in the collection.
+```
+o----MapAsync(items)---------------------------------------------o
+          \                                                 /
+            Map(items[0]) -- Map(items[1]) -- Map(items[2])
+```
+
+`MapParallel` executes the mapping of each item in the collection asynchronously, completing the async mapping when all items have been mapped.
+```
+o----MapParallel(items)------------------------------------------o
+          \               /
+          \ Map(items[0])
+          \ Map(items[1])
+            Map(items[2])
+```
+
+The most appropriate asynchronous collection mapping method to use will depend on each specific use case. The size of the collection and the complexity of the mapping should be considered.

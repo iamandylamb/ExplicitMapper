@@ -16,9 +16,7 @@ namespace Example.Microsoft.Extensions.DependencyInjection
     {
         private IServiceProvider services;
 
-        private string hashedPassword;
-
-        private UserRegistrationModel model = new UserRegistrationModel
+        private UserRegistrationModel model1 = new UserRegistrationModel
         {
             FirstName = "Bob",
             LastName = "Dylan",
@@ -34,6 +32,22 @@ namespace Example.Microsoft.Extensions.DependencyInjection
             }
         };
 
+        private UserRegistrationModel model2 = new UserRegistrationModel
+        {
+            FirstName = "Joni",
+            LastName = "Mitchell",
+            City = "Calgary",
+            DayOfBirth = 7,
+            MonthOfBirth = 11,
+            YearOfBirth = 1943,
+            Password = "Big Yellow Taxi",
+            SecurityQuestionsAndAnswers = new Tuple<string, string>[]
+            {
+                new Tuple<string, string>("Best folk performance Grammy in 1969", "Clouds"),
+                new Tuple<string, string>("Your madden name", "Anderson"),
+            }
+        };
+
         [TestInitialize]
         public void Initialise()
         {
@@ -41,37 +55,62 @@ namespace Example.Microsoft.Extensions.DependencyInjection
                                               .AddSingleton(typeof(XmlSerializerMapper<>), typeof(XmlSerializerMapper<>))
                                               .AddSingleton<HashAlgorithm, SHA1CryptoServiceProvider>()
                                               .BuildServiceProvider();
-
-            var hasher = services.GetService<HashAlgorithm>();
-            hashedPassword = Convert.ToBase64String(hasher.ComputeHash(Encoding.UTF8.GetBytes(model.Password)));
         }
 
         [TestMethod]
-        public void CanMapTheModel()
+        public void CanMapTheModelSynchronously()
         {
             var mapper = services.GetService<IMapper<UserRegistrationModel, User>>();
 
-            var user = mapper.Map(model);
+            var user = mapper.Map(model1);
 
-            AssertUser(user);
+            AssertUser(model1, user);
         }
 
         [TestMethod]
-        public async Task CanAsynchronouslyMapTheModel()
+        public async Task CanMapTheModelAsynchronously()
         {
             var mapper = services.GetService<IMapper<UserRegistrationModel, User>>();
 
-            var user = await mapper.MapAsync(model);
+            var user = await mapper.MapAsync(model2);
 
-            AssertUser(user);
+            AssertUser(model2, user);
         }
 
-        private void AssertUser(User user)
+        [TestMethod]
+        public async Task CanMapModelCollectionAsynchronously()
+        {
+            var mapper = services.GetService<IMapper<UserRegistrationModel, User>>();
+
+            var users = await mapper.MapAsync(new[] { model1, model2 });
+
+            AssertUser(model1, users.First());
+            AssertUser(model2, users.Last());
+        }
+
+        [TestMethod]
+        public async Task CanMapModelCollectionInParallel()
+        {
+            var mapper = services.GetService<IMapper<UserRegistrationModel, User>>();
+
+            var users = await mapper.MapParallel(new[] { model1, model2 });
+
+            AssertUser(model1, users.First());
+            AssertUser(model2, users.Last());
+        }
+
+        private void AssertUser(UserRegistrationModel model, User user)
         {
             Assert.AreEqual(model.LastName, user.Surname);
             Assert.AreEqual(model.City, user.Address.AddressLine3);
             Assert.AreEqual(model.SecurityQuestionsAndAnswers.Length, user.SecurityQuestions.Count());
-            Assert.AreEqual(hashedPassword, user.Password.HashedPassword);
+            Assert.AreEqual(ExpectedHash(model.Password), user.Password.HashedPassword);
+        }
+
+        private string ExpectedHash(string input)
+        {
+            var hasher = services.GetService<HashAlgorithm>();
+            return Convert.ToBase64String(hasher.ComputeHash(Encoding.UTF8.GetBytes(input)));
         }
     }
 }

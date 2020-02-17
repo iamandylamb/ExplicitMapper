@@ -9,8 +9,8 @@
   </PropertyGroup>
 
   <PropertyGroup>
-  <PackageId>ExplicitMapper</PackageId>
-  <Title>ExplicitMapper</Title>
+  <PackageId>Explicit.Mapper</PackageId>
+  <Title>Explicit.Mapper</Title>
   <Summary>A mapping framework that is completely explicit.</Summary>
   <PackageDescription>Type mapping and member mapping must be fully defined. No 'magic' going on at all.</PackageDescription>
   <PackageLicenseExpression>MIT</PackageLicenseExpression>

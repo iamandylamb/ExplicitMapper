@@ -35,6 +35,14 @@ public interface IMapper<TSource, TDestination>
 }
 ```
 
+## Installation
+
+### Package Manager
+`PM> Install-Package Explicit.Mapper`
+
+### .NET CLI
+`> dotnet add package Explicit.Mapper`
+
 ## Mapper examples
 
 ### Class mapper for reference types

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExplicitMapper", "src\ExplicitMapper.csproj", "{320FB538-D83A-4DB7-AB4D-A2883FDE6818}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Explicit.Mapper", "src\Explicit.Mapper.csproj", "{320FB538-D83A-4DB7-AB4D-A2883FDE6818}"
 EndProject
 Project("{3AC096D0-A1C2-E12C-1390-A8335801FDAB}") = "Test.ExplicitMapper", "test\ExplicitMapper.Test.csproj", "{BFAD7407-F164-4ED5-9D5C-DAA79A512681}"
 EndProject
